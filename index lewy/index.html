@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator cen ProjectRPG</title>
+    <style>
+      body {
+        background-color: rgb(21 21 21);
+      }
+      select {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        font-size: 16px;
+        color: #333;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* style dla ikony rozwijanej strzałki */
+      select::-ms-expand {
+        display: none;
+      }
+
+      select::after {
+        content: "\25BC";
+        color: #333;
+        font-size: 16px;
+        padding-right: 5px;
+      }
+      #calc-text-top {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background-color: rgb(31, 31, 31);
+        border-radius: 10px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      form {
+        background-color: rgb(241 194 50);
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 10px;
+        margin: 0 auto;
+        width: 400px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 2px solid #ccc;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px; /* increase font size */
+      }
+
+      input[type="checkbox"] {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 5px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      input[type="text"] {
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 18px; /* increase font size */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        border: 2px solid #ccc;
+      }
+      #price {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      #price:focus {
+        outline: none;
+        border-color: #f5a623;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="calc-text-top">Kalkulator cen ProjectRPG</h1>
+    <form>
+      <label for="car">Wybierz model auta:</label>
+      <select id="car" name="car">
+        <option value="Bobcat">Bobcat</option>
+        <option value="Bravura">Bravura</option>
+        <option value="Clover">Clover</option>
+        <option value="Clover Wagon">Clover Wagon</option>
+        <option value="Manana">Manana</option>
+        <option value="Moonbeam">Moonbeam</option>
+        <option value="Perennial">Perennial</option>
+        <option value="Picador">Picador</option>
+        <option value="Previon">Previon</option>
+        <option value="Sadler">Sadler</option>
+        <option value="Tampa">Tampa</option>
+        <option value="Walton">Walton</option>
+      </select>
+      <br /><br />
+      <label for="mods">Wybierz tuning:</label>
+      <br />
+      <input type="checkbox" id="mod1" name="mod1" value="ecu" />
+      <label for="mod1">ECU V4</label>
+      <br />
+      <input type="checkbox" id="mod2" name="mod2" value="turbo" />
+      <label for="mod2">Turbo v5</label>
+      <br />
+      <input type="checkbox" id="mod3" name="mod3" value="lpg" />
+      <label for="mod3">LPG 75L</label>
+      <br />
+      <input type="checkbox" id="mod4" name="mod4" value="nitro" />
+      <label for="mod4">C.F.I. v5</label>
+      <br /><br />
+      <button type="button" onclick="calculatePrice()">Oblicz cenę</button>
+      <br /><br />
+      <label for="price">Cena:</label>
+      <input type="text" id="price" name="price" readonly />
+    </form>
+
+    <script>
+      function calculatePrice() {
+        var car = document.getElementById("car").value;
+        var price = 0;
+        switch (car) {
+          case "Bobcat":
+            price = 33000;
+            break;
+          case "Bravura":
+            price = 21000;
+            break;
+          case "Clover":
+            price = 17000;
+            break;
+          case "Clover Wagon":
+            price = 17000;
+            break;
+          case "Manana":
+            price = 5000;
+            break;
+          case "Moonbeam":
+            price = 6700;
+            break;
+        }
+        if (document.getElementById("mod1").checked) {
+          price += 20000;
+        }
+        if (document.getElementById("mod2").checked) {
+          price += 30000;
+        }
+        if (document.getElementById("mod3").checked) {
+          price += 17500;
+        }
+        if (document.getElementById("mod4").checked) {
+          price += 125000;
+        }
+        document.getElementById("price").value = price;
+      }
+    </script>
+  </body>
+</html>
